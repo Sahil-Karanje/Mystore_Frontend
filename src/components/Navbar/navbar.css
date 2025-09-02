@@ -1,0 +1,145 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 0.8em 1.5em;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* --- Logo --- */
+.navbar_logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #222;
+}
+
+/* --- Search Bar (Desktop) --- */
+.navbar_search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 1em;
+}
+
+.navbar_search input {
+  width: 50%;
+  padding: 0.6em 1em;
+  border: 1px solid #ccc;
+  border-radius: 25px 0 0 25px;
+  outline: none;
+  font-size: 1rem;
+  transition: border 0.2s ease;
+}
+
+.navbar_search input:focus {
+  border-color: #007bff;
+}
+
+.navbar_search button {
+  padding: 0.6em 1em;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.navbar_search button:hover {
+  background: #0056b3;
+}
+
+/* --- Right side (Icons + Hamburger) --- */
+.navbar_right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar_icons {
+  display: flex;
+  gap: 1.2em;
+  margin-right: 1em;
+}
+
+.icon {
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icon:hover {
+  color: #007bff;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* --- Mobile Menu --- */
+.mobile_menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 1em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile_search {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.mobile_search input {
+  flex: 1;
+  padding: 0.5em 1em;
+  border: 1px solid #ccc;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+}
+
+.mobile_search button {
+  padding: 0.5em 1em;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+}
+
+.mobile_icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .navbar_search {
+    display: none; /* hide search in desktop navbar */
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

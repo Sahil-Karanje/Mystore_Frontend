@@ -1,0 +1,95 @@
+.login_container {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  margin: auto;
+  margin-top: 50px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Left Side - Image Placeholder */
+.login_image {
+  flex: 1; /* takes available space */
+  background-size: cover;   /* makes image cover full area */
+  background-position: center; /* keeps it centered */
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* Right Side - Form */
+.login_form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* Inputs */
+.login_form input {
+  width: 100%;
+  padding: 0.8em;
+  margin: 0.5em 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.login_form input:hover {
+  filter: drop-shadow(0 0 0.5em #646cffaa);
+}
+
+.login_form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+/* Button */
+.login_form button {
+  width: 100%;
+  padding: 0.8em;
+  margin-top: 1em;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login_form button:hover {
+  background: #0056b3;
+}
+
+/* Register link */
+.login_form a {
+  padding: 0.8em;
+  margin-top: 1em;
+  cursor: pointer;
+  color: #0053ab;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .login_container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login_image {
+    display: none; /* hide image on small screens */
+  }
+
+  .login_form {
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+  }
+}
