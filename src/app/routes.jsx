@@ -1,20 +1,35 @@
+import Account from "../features/account/Account";
+import Admin from "../features/admin/pages/Admin";
 import Login from "../features/auth/pages/login/Login";
 import Register from "../features/auth/pages/register/Register";
+import Cart from "../features/cart/Cart";
 import Home from "../features/home/pages/Home";
 
 const routes = [
     {
         path: "/",
-        element: <Home/>
+        element: <Home />
     },
     {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
     },
     {
         path: "/register",
-        element: <Register/>,
+        element: <Register />,
     },
+    {
+        path: "/cart",
+        element: <Cart />
+    },
+    {
+        path: "/account",
+        element: <Account />
+    },
+    {
+        path: "/admin",
+        element: <Admin />
+    }
 ];
 
 export default routes;

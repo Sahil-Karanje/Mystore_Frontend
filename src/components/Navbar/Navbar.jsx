@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { FaShoppingCart, FaUser, FaBars, FaTimes } from "react-icons/fa";
 import "./navbar.css";
 import axios from "axios";
+import { isAuthenticated } from "../../features/auth/authApi";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 
     const [keyword, setKeyword] = useState("");
     const [menuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,6 +24,22 @@ const Navbar = () => {
 
         setMenuOpen(false);
     };
+
+    const handleUserClick = (e) => {
+        if (isAuthenticated())
+            navigate("/account");
+        else
+            navigate("/login")
+    }
+
+    const handleCartClick = (e) => {
+        const token = localStorage.getItem("token");
+        console.log("Token in localStorage:", token);
+        if (isAuthenticated())
+            navigate("/cart");
+        else
+            navigate("/login")
+    }
 
     return (
         <nav className="navbar">
@@ -45,11 +64,11 @@ const Navbar = () => {
                 <div className="navbar_icons">
                     <FaShoppingCart
                         className="icon"
-                        onClick={() => (window.location.href = "/cart")}
+                        onClick={handleCartClick}
                     />
                     <FaUser
                         className="icon"
-                        onClick={() => (window.location.href = "/account")}
+                        onClick={handleCartClick}
                     />
                 </div>
                 <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
@@ -72,11 +91,11 @@ const Navbar = () => {
                     <div className="mobile_icons">
                         <FaShoppingCart
                             className="icon"
-                            onClick={() => (window.location.href = "/cart")}
+                            onClick={handleCartClick}
                         />
                         <FaUser
                             className="icon"
-                            onClick={() => (window.location.href = "/account")}
+                            onClick={handleUserClick}
                         />
                     </div>
                 </div>

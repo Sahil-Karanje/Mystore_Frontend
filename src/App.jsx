@@ -3,18 +3,21 @@ import routes from './app/routes';
 import './App.css'
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import { UserProvider } from "./UserContext";
 
-function AppRoutes(){
+function AppRoutes() {
   return useRoutes(routes);
 }
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar/>
-      <AppRoutes/>
-      <Footer/>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Navbar />
+        <AppRoutes />
+        <Footer />
+      </BrowserRouter>
+    </UserProvider>
   )
 }
 

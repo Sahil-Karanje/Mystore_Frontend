@@ -1,15 +1,21 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:5000/api/auth"; // later your ASP.NET backend URL
+const API_URL = "https://localhost:7007/api/auth"; 
 
 export const login = async (credentials) => {
-  // return await axios.post(`${API_URL}/login`, credentials);
-  return {data: credentials};
+  return await axios.post(`${API_URL}/login`, credentials);
 };
 
 export const register = async (userData) => {
-  // return await axios.post(`${API_URL}/register`, userData);
-  return {data: userData};
+  return await axios.post(`${API_URL}/register?password=${userData.Password}`, userData);
+};
+
+export const isAuthenticated = () => {
+  return !!localStorage.getItem("token");
+};
+
+export const logout = () => {
+  localStorage.removeItem("token");
 };
 
 // export const getProfile = async (token) => {

@@ -5,20 +5,19 @@ import './register.css'
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [gender, setGender] = useState("");
+  const [UserName, setUserName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [Gender, setGender] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await register({ name, surname, email, password, gender });
+      const res = await register({ UserName, Email, Password, Gender });
       console.log("Register Successfully: ", res.data);
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       console.error("Registration Failed: ", err);
     }
@@ -30,15 +29,9 @@ function Register() {
       <form className='login_form' onSubmit={handleRegister}>
         <input
           type="text"
-          value={name}
-          placeholder='name'
-          onChange={(e) => setName(e.target.value)} />
-
-        <input
-          type="text"
-          value={surname}
-          placeholder='surname'
-          onChange={(e) => setSurname(e.target.value)} />
+          value={UserName}
+          placeholder='Username'
+          onChange={(e) => setUserName(e.target.value)} />
 
         <div className="gender">
           <p className="select_gender">Select Gender</p>
@@ -46,7 +39,7 @@ function Register() {
             <input
               type="radio"
               value="male"
-              checked={gender === "male"}
+              checked={Gender === "male"}
               onChange={(e) => setGender(e.target.value)}
             />
             <label>
@@ -55,7 +48,7 @@ function Register() {
             <input
               type="radio"
               value="female"
-              checked={gender === "female"}
+              checked={Gender === "female"}
               onChange={(e) => setGender(e.target.value)}
             />
             <label>
@@ -64,7 +57,7 @@ function Register() {
             <input
               type="radio"
               value="other"
-              checked={gender === "other"}
+              checked={Gender === "other"}
               onChange={(e) => setGender(e.target.value)}
             />
             <label>
@@ -75,13 +68,13 @@ function Register() {
 
         <input
           type="email"
-          value={email}
+          value={Email}
           placeholder='email'
           onChange={(e) => setEmail(e.target.value)} />
 
         <input
           type="password"
-          value={password}
+          value={Password}
           placeholder='password'
           onChange={(e) => setPassword(e.target.value)} />
 

@@ -1,0 +1,74 @@
+.addProduct_form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.addProduct_form input,
+.addProduct_form textarea {
+  margin-bottom: 12px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.addProduct_form button {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.addProduct_form button:hover {
+  background: #0056b3;
+}
+
+/* Popup styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup_content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 300px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+.popup_content p.success {
+  color: green;
+  font-weight: bold;
+}
+
+.popup_content p.error {
+  color: red;
+  font-weight: bold;
+}
+
+.popup_content button {
+  margin-top: 15px;
+  padding: 8px 14px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup_content button:hover {
+  background: #0056b3;
+}

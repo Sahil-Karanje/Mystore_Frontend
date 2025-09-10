@@ -4,7 +4,7 @@
   padding: 1em;
   border-radius: 8px;
   width: 100%;
-  max-width: 350px;
+  max-width: 245px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -46,7 +46,7 @@
 .category_card a {
   color: #007bff;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
 }
 
 .category_card a:hover {
