@@ -1,10 +1,27 @@
-.admin_container {
+.account_container {
+  max-width: 1200px;   
+  margin: 0 auto;      
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  background: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.becomeSellerBanner {
+  max-width: 1200px;   
+  margin: 0 auto;      
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  cursor: pointer;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .sidemenu {
-  width: 220px;
+  width: 20%;
   background: #f4f4f4;
   display: flex;
   flex-direction: column;
@@ -37,13 +54,6 @@
   flex: 1;
   padding: 20px;
   background: #fff;
-}
-
-.account_container {
-  display: flex;
-  min-height: 100vh;
-  background: #f9f9f9;
-  font-family: Arial, sans-serif;
 }
 
 .section {

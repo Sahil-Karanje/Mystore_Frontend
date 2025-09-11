@@ -1,3 +1,4 @@
+import BecomeSeller from "../features/admin/components/BecomeSeller/BecomeSeller";
 import Admin from "../features/admin/pages/Admin";
 import Login from "../features/auth/pages/login/Login";
 import Register from "../features/auth/pages/register/Register";
@@ -23,7 +24,11 @@ const routes = [
     },
     {
         path: "/account",
-        element: <Admin/>
+        element: <Admin />
+    },
+    {
+        path: "/becomeSeller",
+        element: <BecomeSeller />
     }
 ];
 

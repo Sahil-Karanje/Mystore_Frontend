@@ -1,32 +1,35 @@
-import React from 'react'
 import './home.css'
-import FourProductCard from '../../../components/FourProductCard/FourProductCard';
-import img1 from '../../../assets/login_bg.jpg';
-import img2 from '../../../assets/login_bg.jpg';
-import img3 from '../../../assets/login_bg.jpg';
-import img4 from '../../../assets/login_bg.jpg';
+import FourProductCard from '../components/FourProductCard/FourProductCard';
 import bannerImg1 from '../../../assets/Banner Images/banner1.jpg'
 import bannerImg2 from '../../../assets/Banner Images/banner2.jpg'
 import bannerImg3 from '../../../assets/Banner Images/banner3.jpg'
-import product1 from '../../../assets/login_bg.jpg';
-import product2 from '../../../assets/resume_Photo.jpg';
 import BannerImgSlider from '../components/BannerimageSlider/BannerImgSlider';
-import ImgSlider from '../components/image_slider/ImgSlider';
+import CategoryCard from '../components/CategoryCard/CategoryCard';
+import ProductSlider from '../components/productSlider/ProductSlider';
 
 function Home() {
   const HomeProducts = [
-    { name: "Cushion covers", image: img1 },
-    { name: "Figurines", image: img2 },
-    { name: "Home storage", image: img3 },
-    { name: "Lighting", image: img4 },
+    { name: "Cushion covers", image: bannerImg1 },
+    { name: "Figurines", image: bannerImg1 },
+    { name: "Home storage", image: bannerImg1 },
+    { name: "Lighting", image: bannerImg1 },
   ];
 
+  const sliderProducts =[
+    { imageUrl: "/images/headphone.jpg" },
+    { imageUrl: "/images/socks.jpg" },
+    { imageUrl: "/images/gift.jpg" },
+    { imageUrl: "/images/gloves.jpg" },
+    { imageUrl: "/images/shoe.jpg" },
+    { imageUrl: "/images/headphone.jpg" },
+    { imageUrl: "/images/socks.jpg" },
+    { imageUrl: "/images/gift.jpg" },
+    { imageUrl: "/images/gloves.jpg" },
+    { imageUrl: "/images/shoe.jpg" },
+    
+  ]
+
   const bannerImages = [bannerImg1, bannerImg2, bannerImg3];
-  // const productImages = [{
-  //   product1, product2, product1, product2, product1, product2, product1, product2,
-  //   product1, product2, product1, product2, product1, product2, product1, product2,
-  //   product1, product2, product2, product2
-  // }];
 
   return (
     <div>
@@ -36,10 +39,25 @@ function Home() {
 
       <div className="allCardsContainer">
         <FourProductCard title="Revamp your home in style" products={HomeProducts} linkText="Explore all" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
         <FourProductCard title="Best deals for you" products={HomeProducts} linkText="See more" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
         <FourProductCard title="Best deals for you" products={HomeProducts} linkText="See more" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
+      </div>
+      <div className="productSliderContainer">
+        <ProductSlider title="More Picks for you" products={sliderProducts} />
+      </div>
+      <div className="productSliderContainer">
+        <ProductSlider title="More Picks for you" products={sliderProducts} />
+      </div>
+      <div className="cardsContainer">
+        <FourProductCard title="Revamp your home in style" products={HomeProducts} linkText="Explore all" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
         <FourProductCard title="Best deals for you" products={HomeProducts} linkText="See more" />
-        {/* <ImgSlider slides={productImages} /> */}
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
+        <FourProductCard title="Best deals for you" products={HomeProducts} linkText="See more" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
       </div>
     </div>
   )

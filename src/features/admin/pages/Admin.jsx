@@ -6,10 +6,12 @@ import WishList from "../components/wishlist/WishList";
 import Address from "../components/Address/Address";
 import YourOrders from "../components/Your Orders/YourOrders";
 import { getProfile } from "../../auth/authApi";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -28,56 +30,67 @@ const Admin = () => {
     return <div className="loading">Loading...</div>;
   }
 
-  return (
-    <div className="account_container">
-      <div className="sidemenu">
-        <h2
-          className={`sidemenu_item ${activeTab === "profile" ? "active" : ""}`}
-          onClick={() => setActiveTab("profile")}
-        >
-          Profile
-        </h2>
-        <div className="divider"></div>
-        <h2
-          className={`sidemenu_item ${activeTab === "wishlist" ? "active" : ""}`}
-          onClick={() => setActiveTab("wishlist")}
-        >
-          Wish List
-        </h2>
-        <div className="divider"></div>
-        <h2
-          className={`sidemenu_item ${activeTab === "address" ? "active" : ""}`}
-          onClick={() => setActiveTab("address")}
-        >
-          Address
-        </h2>
-        <div className="divider"></div>
-        <h2
-          className={`sidemenu_item ${activeTab === "orders" ? "active" : ""}`}
-          onClick={() => setActiveTab("orders")}
-        >
-          Your Orders
-        </h2>
-        <div className="divider"></div>
-        {user.isSeller && (
-          <h2
-            className={`sidemenu_item ${activeTab === "addProduct" ? "active" : ""
-              }`}
-            onClick={() => setActiveTab("addProduct")}
-          >
-            Add Product
-          </h2>
-        )}
-      </div>
+  const handleBecomeSeller = () => {
+    if (!user.isSeller)
+      navigate("/becomeSeller")
+  }
 
-      <div className="main_content">
-        {activeTab === "profile" && <Profile user={user} />}
-        {activeTab === "wishlist" && <WishList />}
-        {activeTab === "address" && <Address />}
-        {activeTab === "orders" && <YourOrders />}
-        {activeTab === "addProduct" && user.isSeller && <AddProduct />}
+  return (
+    <>
+      <div className="becomeSellerBanner">
+        <h1 onClick={handleBecomeSeller}>{user.isSeller ? "Seller Admin" : "Become a Seller"}</h1>
       </div>
-    </div>
+      <div className="account_container">
+
+        <div className="sidemenu">
+          <h2
+            className={`sidemenu_item ${activeTab === "profile" ? "active" : ""}`}
+            onClick={() => setActiveTab("profile")}
+          >
+            Profile
+          </h2>
+          <div className="divider"></div>
+          <h2
+            className={`sidemenu_item ${activeTab === "wishlist" ? "active" : ""}`}
+            onClick={() => setActiveTab("wishlist")}
+          >
+            Wish List
+          </h2>
+          <div className="divider"></div>
+          <h2
+            className={`sidemenu_item ${activeTab === "address" ? "active" : ""}`}
+            onClick={() => setActiveTab("address")}
+          >
+            Address
+          </h2>
+          <div className="divider"></div>
+          <h2
+            className={`sidemenu_item ${activeTab === "orders" ? "active" : ""}`}
+            onClick={() => setActiveTab("orders")}
+          >
+            Your Orders
+          </h2>
+          <div className="divider"></div>
+          {user.isSeller && (
+            <h2
+              className={`sidemenu_item ${activeTab === "addProduct" ? "active" : ""
+                }`}
+              onClick={() => setActiveTab("addProduct")}
+            >
+              Add Product
+            </h2>
+          )}
+        </div>
+
+        <div className="main_content">
+          {activeTab === "profile" && <Profile user={user} />}
+          {activeTab === "wishlist" && <WishList />}
+          {activeTab === "address" && <Address />}
+          {activeTab === "orders" && <YourOrders />}
+          {activeTab === "addProduct" && user.isSeller && <AddProduct />}
+        </div>
+      </div>
+    </>
   );
 };
 

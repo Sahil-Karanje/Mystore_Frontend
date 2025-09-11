@@ -1,4 +1,3 @@
-
 .bannerContainer {
   position: relative;
   width: 100%;
@@ -6,10 +5,9 @@
   overflow: hidden;
 }
 
-
 .allCardsContainer {
   position: relative;
-  margin-top: -250px; 
+  margin-top: -250px;
   z-index: 10;
   display: flex;
   flex-wrap: wrap;
@@ -18,8 +16,16 @@
   padding: 0 20px;
 }
 
-.allCardsContainer > * {
+.allCardsContainer>* {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 20px;
 }
