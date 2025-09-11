@@ -1,6 +1,18 @@
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../../../auth/authApi';
 import './profile.css';
 
 const Profile = ({ user }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    try {
+      logout();
+      navigate("/");
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="profile_container">
@@ -16,6 +28,7 @@ const Profile = ({ user }) => {
           <p><span>Role:</span> {user.isSeller ? "Seller" : "User"}</p>
         </div>
       </div>
+      <button className="logout" onClick={handleLogout}>Logout</button>
     </div>
   );
 };
