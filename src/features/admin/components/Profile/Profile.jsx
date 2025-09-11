@@ -1,21 +1,21 @@
-import React, { useContext } from 'react';
 import './profile.css';
-import sampleImg from '../../../../assets/login_bg.jpg'
-import { UserContext } from '../../../../UserContext';
 
-const Profile = () => {
-
-  const { state } = useContext(UserContext);
+const Profile = ({ user }) => {
 
   return (
     <div className="profile_container">
-      <img
-        src={sampleImg}
-        alt="U"
-        className="profile_image"
-      />
-      <h2 className="profile_name">{state.name}</h2>
-      <h4>Seller</h4>
+      <div className="profile_card">
+        <div className="profile_avatar">
+          {user.userName ? user.userName.charAt(0).toUpperCase() : "U"}
+        </div>
+        <h2 className="profile_name">{user.userName}</h2>
+        <p className="profile_email">{user.email}</p>
+
+        <div className="profile_details">
+          <p><span>Gender:</span> {user.gender}</p>
+          <p><span>Role:</span> {user.isSeller ? "Seller" : "User"}</p>
+        </div>
+      </div>
     </div>
   );
 };

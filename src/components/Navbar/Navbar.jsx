@@ -68,7 +68,7 @@ const Navbar = () => {
                     />
                     <FaUser
                         className="icon"
-                        onClick={handleCartClick}
+                        onClick={handleUserClick}
                     />
                 </div>
                 <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>

@@ -1,4 +1,3 @@
-import Account from "../features/account/Account";
 import Admin from "../features/admin/pages/Admin";
 import Login from "../features/auth/pages/login/Login";
 import Register from "../features/auth/pages/register/Register";
@@ -24,11 +23,7 @@ const routes = [
     },
     {
         path: "/account",
-        element: <Account />
-    },
-    {
-        path: "/admin",
-        element: <Admin />
+        element: <Admin/>
     }
 ];
 
