@@ -20,17 +20,6 @@ function Home() {
     { imageUrl: "/images/socks.jpg", id: 2 },
     { imageUrl: "/images/gift.jpg", id: 3 },
     { imageUrl: "/images/gloves.jpg", id: 4 },
-    { imageUrl: "/images/shoe.jpg", id: 1 },
-    { imageUrl: "/images/headphone.jpg", id: 1 },
-    { imageUrl: "/images/socks.jpg", id: 2 },
-    { imageUrl: "/images/gift.jpg", id: 3 },
-    { imageUrl: "/images/gloves.jpg", id: 4 },
-    { imageUrl: "/images/shoe.jpg", id: 1 },
-    { imageUrl: "/images/headphone.jpg", id: 1 },
-    { imageUrl: "/images/socks.jpg", id: 2 },
-    { imageUrl: "/images/gift.jpg", id: 3 },
-    { imageUrl: "/images/gloves.jpg", id: 4 },
-    { imageUrl: "/images/shoe.jpg", id: 1 },
 
   ]
 

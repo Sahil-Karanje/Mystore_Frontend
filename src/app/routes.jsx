@@ -5,6 +5,7 @@ import Register from "../features/auth/pages/register/Register";
 import Cart from "../features/cart/Cart";
 import Home from "../features/home/pages/Home";
 import ProductDetails from "../features/products/pages/ProductDetails";
+import SearchPage from "../features/SearchPage/SearchPage";
 
 const routes = [
     {
@@ -34,6 +35,10 @@ const routes = [
     {
         path: "/product/:id",
         element: <ProductDetails />
+    },
+    {
+        path: "/search_page",
+        element: <SearchPage />
     }
 ];
 

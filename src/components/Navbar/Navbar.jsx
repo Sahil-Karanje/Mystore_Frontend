@@ -11,13 +11,13 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSearchSubmit = async (e) => {
         e.preventDefault();
         if (!keyword.trim()) return;
 
         try {
-            const res = await axios.get(`http://localhost:8080/api/search?query=${keyword}`);
-            console.log("Search results:", res.data);
+            const res = await axios.get(`https://localhost:7007/api/product/search?keyword=${keyword}`);
+            navigate("/search_page", { state: { results: res.data } });
         } catch (err) {
             console.error("Search failed:", err);
         }
@@ -43,13 +43,11 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            {/* Left - Logo */}
             <div className="navbar_logo" onClick={() => (window.location.href = "/")}>
                 MyStore
             </div>
 
-            {/* Center - Search (hidden on mobile) */}
-            <form className="navbar_search" onSubmit={handleSubmit}>
+            <form className="navbar_search" onSubmit={handleSearchSubmit}>
                 <input
                     type="text"
                     placeholder="Search products..."
@@ -59,7 +57,6 @@ const Navbar = () => {
                 <button type="submit">Search</button>
             </form>
 
-            {/* Right - Icons / Hamburger */}
             <div className="navbar_right">
                 <div className="navbar_icons">
                     <FaShoppingCart
