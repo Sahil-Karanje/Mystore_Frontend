@@ -4,6 +4,7 @@ import Login from "../features/auth/pages/login/Login";
 import Register from "../features/auth/pages/register/Register";
 import Cart from "../features/cart/Cart";
 import Home from "../features/home/pages/Home";
+import ProductDetails from "../features/products/pages/ProductDetails";
 
 const routes = [
     {
@@ -29,6 +30,10 @@ const routes = [
     {
         path: "/becomeSeller",
         element: <BecomeSeller />
+    },
+    {
+        path: "/product/:id",
+        element: <ProductDetails />
     }
 ];
 

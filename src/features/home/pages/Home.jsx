@@ -15,18 +15,23 @@ function Home() {
     { name: "Lighting", image: bannerImg1 },
   ];
 
-  const sliderProducts =[
-    { imageUrl: "/images/headphone.jpg" },
-    { imageUrl: "/images/socks.jpg" },
-    { imageUrl: "/images/gift.jpg" },
-    { imageUrl: "/images/gloves.jpg" },
-    { imageUrl: "/images/shoe.jpg" },
-    { imageUrl: "/images/headphone.jpg" },
-    { imageUrl: "/images/socks.jpg" },
-    { imageUrl: "/images/gift.jpg" },
-    { imageUrl: "/images/gloves.jpg" },
-    { imageUrl: "/images/shoe.jpg" },
-    
+  const sliderProducts = [
+    { imageUrl: "/images/headphone.jpg", id: 1 },
+    { imageUrl: "/images/socks.jpg", id: 2 },
+    { imageUrl: "/images/gift.jpg", id: 3 },
+    { imageUrl: "/images/gloves.jpg", id: 4 },
+    { imageUrl: "/images/shoe.jpg", id: 1 },
+    { imageUrl: "/images/headphone.jpg", id: 1 },
+    { imageUrl: "/images/socks.jpg", id: 2 },
+    { imageUrl: "/images/gift.jpg", id: 3 },
+    { imageUrl: "/images/gloves.jpg", id: 4 },
+    { imageUrl: "/images/shoe.jpg", id: 1 },
+    { imageUrl: "/images/headphone.jpg", id: 1 },
+    { imageUrl: "/images/socks.jpg", id: 2 },
+    { imageUrl: "/images/gift.jpg", id: 3 },
+    { imageUrl: "/images/gloves.jpg", id: 4 },
+    { imageUrl: "/images/shoe.jpg", id: 1 },
+
   ]
 
   const bannerImages = [bannerImg1, bannerImg2, bannerImg3];
