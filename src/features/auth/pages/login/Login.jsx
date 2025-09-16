@@ -4,6 +4,7 @@ import loginBg from '../../../../assets/login_bg.jpg'
 import "./login.css"
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../../UserContext';
+import { toast } from "react-toastify";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -20,11 +21,18 @@ function Login() {
         email: response.data.user.email,
         gender: response.data.user.gender
       }
-      console.log(userData);
+
       dispatch({ type: "LOGIN", payload: userData });
       localStorage.setItem("token", response.data.token);
-      navigate('/');
+
+      toast.success("Login Successful 🎉");
+
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+
     } catch (err) {
+      toast.error("Login Failed ❌");
       console.error("Login failed: ", err);
     }
   };
@@ -49,10 +57,9 @@ function Login() {
 
         <button type="submit">Login</button>
         <a href="/register">Register me</a>
-
       </form>
     </div>
   )
 }
 
-export default Login
+export default Login;

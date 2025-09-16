@@ -16,10 +16,10 @@ function Home() {
   ];
 
   const sliderProducts = [
-    { imageUrl: "/images/headphone.jpg", id: 1 },
-    { imageUrl: "/images/socks.jpg", id: 2 },
-    { imageUrl: "/images/gift.jpg", id: 3 },
-    { imageUrl: "/images/gloves.jpg", id: 4 },
+    { imageUrl: "/ProductImages/headphone.jpg", id: 1 },
+    { imageUrl: "/ProductImages/socks.jpg", id: 2 },
+    { imageUrl: "/ProductImages/gift.jpg", id: 3 },
+    { imageUrl: "/ProductImages/gloves.jpg", id: 4 },
 
   ]
 
@@ -33,11 +33,11 @@ function Home() {
 
       <div className="allCardsContainer">
         <FourProductCard title="Revamp your home in style" products={HomeProducts} linkText="Explore all" />
-        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/ProductImages/headphone.jpg" redirectUrl="/" />
         <FourProductCard title="Best deals for you" products={HomeProducts} linkText="See more" />
-        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/ProductImages/headphone.jpg" redirectUrl="/" />
         <FourProductCard title="Best deals for you" products={HomeProducts} linkText="See more" />
-        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/ProductImages/headphone.jpg" redirectUrl="/" />
       </div>
       <div className="productSliderContainer">
         <ProductSlider title="More Picks for you" products={sliderProducts} />
@@ -47,11 +47,11 @@ function Home() {
       </div>
       <div className="cardsContainer">
         <FourProductCard title="Revamp your home in style" products={HomeProducts} linkText="Explore all" />
-        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/ProductImages/headphone.jpg" redirectUrl="/" />
         <FourProductCard title="Best deals for you" products={HomeProducts} linkText="See more" />
-        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/ProductImages/headphone.jpg" redirectUrl="/" />
         <FourProductCard title="Best deals for you" products={HomeProducts} linkText="See more" />
-        <CategoryCard title="Upto 75% off Headphones" imageUrl="/images/headphone.jpg" redirectUrl="/" />
+        <CategoryCard title="Upto 75% off Headphones" imageUrl="/ProductImages/headphone.jpg" redirectUrl="/" />
       </div>
     </div>
   )

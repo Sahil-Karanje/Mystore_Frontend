@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import './addProduct.css';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import './addproduct.css'
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -12,13 +12,10 @@ const AddProduct = () => {
     Stock: "",
     Brand: "",
     Category: "",
-    ImageUrl: "",
     IsActive: true,
   });
 
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -28,71 +25,140 @@ const AddProduct = () => {
     });
   };
 
+  const handleFileChange = (e) => {
+    setImageFile(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
-    setError("");
+
     try {
-      const res = await axios.post("https://localhost:7007/api/product/addNewProduct", formData);
-      setMessage("✅ Product added successfully!");
-      setShowPopup(true);
-      setFormData({
-        Name: "",
-        LongDescription: "",
-        ShortDescription: "",
-        Price: "",
-        DiscountPrice: "",
-        Stock: "",
-        Brand: "",
-        Category: "",
-        ImageUrl: "",
-        IsActive: true,
+      const data = new FormData();
+
+      Object.keys(formData).forEach((key) => {
+        data.append(key, formData[key]);
       });
+
+      if (imageFile) {
+        data.append("imageFile", imageFile);
+      }
+
+      const res = await axios.post(
+        "https://localhost:7007/api/product/addNewProduct",
+        data,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+
+      alert("✅ Product added successfully!");
+      console.log(res.data);
     } catch (err) {
-      setError("❌ Failed to add product. " + (err.response?.data || err.message));
-      setShowPopup(true);
+      alert("❌ Failed to add product: " + (err.response?.data || err.message));
     }
   };
 
   return (
-    <>
-      <form className="addProduct_form" onSubmit={handleSubmit}>
-        <input type="text" name="Name" placeholder="Name" value={formData.Name} onChange={handleChange} required maxLength={150} />
+    <form className="addProduct_form" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="Name"
+        placeholder="Name"
+        value={formData.Name}
+        onChange={handleChange}
+        required
+        className="form_input"
+      />
 
-        <textarea name="LongDescription" placeholder="Long Description" value={formData.LongDescription} onChange={handleChange} maxLength={500}></textarea>
+      <textarea
+        name="LongDescription"
+        placeholder="Long Description"
+        value={formData.LongDescription}
+        onChange={handleChange}
+        className="form_textarea"
+      ></textarea>
 
-        <input type="text" name="ShortDescription" placeholder="Short Description" value={formData.ShortDescription} onChange={handleChange} maxLength={250} />
+      <input
+        type="text"
+        name="ShortDescription"
+        placeholder="Short Description"
+        value={formData.ShortDescription}
+        onChange={handleChange}
+        className="form_input"
+      />
 
-        <input type="number" step="0.01" name="Price" placeholder="Price" value={formData.Price} onChange={handleChange} required />
+      <input
+        type="number"
+        step="0.01"
+        name="Price"
+        placeholder="Price"
+        value={formData.Price}
+        onChange={handleChange}
+        required
+        className="form_input"
+      />
 
-        <input type="number" step="0.01" name="DiscountPrice" placeholder="Discount Price" value={formData.DiscountPrice} onChange={handleChange} />
+      <input
+        type="number"
+        step="0.01"
+        name="DiscountPrice"
+        placeholder="Discount Price"
+        value={formData.DiscountPrice}
+        onChange={handleChange}
+        className="form_input"
+      />
 
-        <input type="number" name="Stock" placeholder="Stock" value={formData.Stock} onChange={handleChange} required />
+      <input
+        type="number"
+        name="Stock"
+        placeholder="Stock"
+        value={formData.Stock}
+        onChange={handleChange}
+        required
+        className="form_input"
+      />
 
-        <input type="text" name="Brand" placeholder="Brand" value={formData.Brand} onChange={handleChange} maxLength={100} />
+      <input
+        type="text"
+        name="Brand"
+        placeholder="Brand"
+        value={formData.Brand}
+        onChange={handleChange}
+        className="form_input"
+      />
 
-        <input type="text" name="Category" placeholder="Category" value={formData.Category} onChange={handleChange} maxLength={100} />
+      <input
+        type="text"
+        name="Category"
+        placeholder="Category"
+        value={formData.Category}
+        onChange={handleChange}
+        className="form_input"
+      />
 
-        <input type="text" name="ImageUrl" placeholder="Image URL" value={formData.ImageUrl} onChange={handleChange} maxLength={255} />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        className="form_file"
+      />
 
-        <label>
-          <input type="checkbox" name="IsActive" checked={formData.IsActive} onChange={handleChange} />
-          Active
-        </label>
+      <label className="form_checkbox">
+        <input
+          type="checkbox"
+          name="IsActive"
+          checked={formData.IsActive}
+          onChange={handleChange}
+          className="checkbox_input"
+        />
+        Active
+      </label>
 
-        <button type="submit">Add Product</button>
-      </form>
+      <button type="submit" className="form_button">
+        Add Product
+      </button>
+    </form>
 
-      {showPopup && (
-        <div className="popup">
-          <div className="popup_content">
-            {message && <p className="success">{message}</p>}
-            {error && <p className="error">{error}</p>}
-            <button onClick={() => setShowPopup(false)}>Close</button>
-          </div>
-        </div>
-      )}
-    </>
   );
 };
 

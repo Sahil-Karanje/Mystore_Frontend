@@ -3,6 +3,7 @@ import { register } from '../../authApi';
 import loginBg from '../../../../assets/login_bg.jpg';
 import './register.css'
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 function Register() {
   const [UserName, setUserName] = useState("");
@@ -16,9 +17,15 @@ function Register() {
 
     try {
       const res = await register({ UserName, Email, Password, Gender });
-      console.log("Register Successfully: ", res.data);
-      navigate("/login");
+      toast.success("Registration Successful 🎉");
+
+      // delay navigation
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+
     } catch (err) {
+      toast.error("Registration Failed ❌");
       console.error("Registration Failed: ", err);
     }
   };
@@ -42,27 +49,21 @@ function Register() {
               checked={Gender === "male"}
               onChange={(e) => setGender(e.target.value)}
             />
-            <label>
-              Male
-            </label>
+            <label>Male</label>
             <input
               type="radio"
               value="female"
               checked={Gender === "female"}
               onChange={(e) => setGender(e.target.value)}
             />
-            <label>
-              Female
-            </label>
+            <label>Female</label>
             <input
               type="radio"
               value="other"
               checked={Gender === "other"}
               onChange={(e) => setGender(e.target.value)}
             />
-            <label>
-              Other
-            </label>
+            <label>Other</label>
           </div>
         </div>
 
@@ -80,10 +81,9 @@ function Register() {
 
         <button type="submit">Register</button>
         <a href="/login">I already have an account</a>
-
       </form>
     </div>
   )
 }
 
-export default Register
+export default Register;
