@@ -1,4 +1,5 @@
 import BecomeSeller from "../features/admin/components/BecomeSeller/BecomeSeller";
+import YourOrders from "../features/admin/components/Your Orders/YourOrders";
 import Admin from "../features/admin/pages/Admin";
 import Login from "../features/auth/pages/login/Login";
 import Register from "../features/auth/pages/register/Register";
@@ -39,7 +40,7 @@ const routes = [
     {
         path: "/search_page",
         element: <SearchPage />
-    }
+    },
 ];
 
 export default routes;

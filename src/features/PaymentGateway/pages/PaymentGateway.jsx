@@ -2,23 +2,41 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import './PaymentGateway.css'
 
-const PaymentGateway = ({ product, onClose }) => {
-    const [address, setAddress] = useState("");
-    const [editing, setEditing] = useState(false);
+const API_URL = "https://localhost:7007/api/auth";
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/api/users/${userId}`)
-    //         .then(res => setAddress(res.data.address))
-    //         .catch(err => console.error(err));
-    // }, [userId]);
+const PaymentGateway = ({ product, onClose }) => {
+    const [address, setAddress] = useState(null);
+    const [editing, setEditing] = useState(false);
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        const fetchAddress = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/address`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (response.data) {
+                    const addr = response.data;
+                    const formatted = `${addr.street}, ${addr.city}, ${addr.state} - ${addr.zip}, ${addr.country}`;
+                    setAddress(formatted);
+                }
+            } catch (err) {
+                console.error("Error fetching address", err);
+            }
+        };
+
+        fetchAddress();
+    }, []);
 
     const handleBuy = async () => {
         try {
-            await axios.post("http://localhost:5000/api/orders", {
-                userId,
-                productId: product.id,
-                address
-            });
+            const res = await axios.post(
+                `https://localhost:7007/api/yourorder/add/${product.productId}`,
+                {},
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
             alert("Order placed successfully!");
             onClose();
         } catch (err) {

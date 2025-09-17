@@ -52,7 +52,31 @@ const ProductDetails = () => {
         }
     };
 
+    const handleAddToCart = async () => {
+        const token = localStorage.getItem("token");
+        try {
+            const res = await axios.post(
+                `https://localhost:7007/api/cart/add/${id}`,
+                {},
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
 
+            toast.success("✅ Product added to cart!");
+            return res.data;
+        } catch (err) {
+            console.error("Cart error:", err.response || err.message);
+
+            if (err.response?.status === 400) {
+                toast.info("ℹ️ Product already in cart!");
+            } else if (err.response?.status === 401) {
+                toast.error("🔑 Please login to add items to cart.");
+            } else {
+                toast.error("❌ Failed to add product to cart.");
+            }
+
+            throw err.response?.data || "Error adding to cart";
+        }
+    };
 
     return (
         <div className="productDetails_container">
@@ -73,7 +97,7 @@ const ProductDetails = () => {
                             {product.inStock ? "In Stock" : "Out of Stock"}
                         </p>
                         <div className="buttons">
-                            <button className="btn addCart">Add to Cart</button>
+                            <button className="btn addCart" onClick={handleAddToCart}>Add to Cart</button>
                             <button className="btn buyNow" onClick={() => setShowPaymentGateway(true)}>Buy Now</button>
                             <button className="btn wishlist" onClick={handleWishlist}>Add to Wishlist</button>
                         </div>
@@ -106,7 +130,6 @@ const ProductDetails = () => {
                 </div>
             </div>
 
-            {/* RIGHT SECTION */}
             <div className="productDetails_sidebar">
                 <div className="sidebar_box">
                     <h3>Why Shop With Us?</h3>
