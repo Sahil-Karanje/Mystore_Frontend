@@ -36,7 +36,11 @@ const AddProduct = () => {
       const data = new FormData();
 
       Object.keys(formData).forEach((key) => {
-        data.append(key, formData[key]);
+        let value = formData[key];
+        if (["Price", "DiscountPrice", "Stock"].includes(key) && value !== "") {
+          value = Number(value);
+        }
+        data.append(key, value);
       });
 
       if (imageFile) {
@@ -52,7 +56,18 @@ const AddProduct = () => {
       );
 
       alert("✅ Product added successfully!");
-      console.log(res.data);
+      setFormData({
+        Name: "",
+        LongDescription: "",
+        ShortDescription: "",
+        Price: "",
+        DiscountPrice: "",
+        Stock: "",
+        Brand: "",
+        Category: "",
+        IsActive: true,
+      });
+      setImageFile(null);
     } catch (err) {
       alert("❌ Failed to add product: " + (err.response?.data || err.message));
     }

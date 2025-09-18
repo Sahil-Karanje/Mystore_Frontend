@@ -84,7 +84,7 @@ const ProductDetails = () => {
             <div className="productDetails_left">
                 <div className="productDetails_header">
                     <img
-                        src={product.imageUrl}
+                        src={"https://localhost:7007" + product.imageUrl}
                         alt={product.name}
                         className="productDetails_img"
                     />
@@ -94,7 +94,7 @@ const ProductDetails = () => {
                         <h2 className="price">₹{product.price}</h2>
                         <p className="category">Category: {product.category}</p>
                         <p className="stock">
-                            {product.inStock ? "In Stock" : "Out of Stock"}
+                            {product.isActive ? "In Stock" : "Out of Stock"}
                         </p>
                         <div className="buttons">
                             <button className="btn addCart" onClick={handleAddToCart}>Add to Cart</button>

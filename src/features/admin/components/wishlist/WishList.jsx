@@ -45,7 +45,7 @@ const WishList = () => {
           {wishlist.map((item) => (
             <div key={item.wishListID} className="wishlist-card">
               <img
-                src={item.product?.imageUrl}
+                src={"https://localhost:7007" + item.product?.imageUrl}
                 alt={item.product?.name}
                 className="wishlist-img"
               />
