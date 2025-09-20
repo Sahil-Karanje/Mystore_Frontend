@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import './addproduct.css'
 
-const AddProduct = () => {
+const AddProduct = ({ user }) => {
   const [formData, setFormData] = useState({
     Name: "",
     LongDescription: "",
@@ -11,7 +11,7 @@ const AddProduct = () => {
     DiscountPrice: "",
     Stock: "",
     Brand: "",
-    Category: "",
+    Category: "", 
     IsActive: true,
   });
 
@@ -46,6 +46,8 @@ const AddProduct = () => {
       if (imageFile) {
         data.append("imageFile", imageFile);
       }
+      
+      data.append("SellerName", user.sellerName);
 
       const res = await axios.post(
         "https://localhost:7007/api/product/addNewProduct",
@@ -65,6 +67,7 @@ const AddProduct = () => {
         Stock: "",
         Brand: "",
         Category: "",
+        SellerName: "",
         IsActive: true,
       });
       setImageFile(null);

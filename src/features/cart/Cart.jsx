@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./cart.css";
 import axios from "axios";
 import CartPaymentGateway from "../PaymentGateway/pages/CartPaymentGateway/CartPaymentGateway";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [showCartPaymentGateway, setShowCartPaymentGateway] = useState(false);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -42,6 +44,10 @@ const Cart = () => {
     0
   );
 
+  const goToProduct = (id) => {
+        navigate(`/product/${id}`);
+    };
+
   return (
     <div className="cart-container">
       {showCartPaymentGateway && (
@@ -62,7 +68,7 @@ const Cart = () => {
           <p className="empty-cart">Your cart is empty</p>
         ) : (
           cartItems.map((item) => (
-            <div className="cart-card" key={item.cartID}>
+            <div className="cart-card" key={item.cartID} onClick={() => goToProduct(item.productId)}>
               <img
                 src={"https://localhost:7007" + item.product.imageUrl}
                 alt={item.product.name}

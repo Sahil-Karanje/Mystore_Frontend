@@ -53,7 +53,7 @@ const CartPaymentGateway = ({ cartItems, onClose }) => {
   };
 
   return (
-    <div className="modal-overlay">
+    <div className="modal-overlay-cart">
       <div className="modal">
         <button className="close-btn" onClick={onClose}>
           ✖
@@ -65,7 +65,7 @@ const CartPaymentGateway = ({ cartItems, onClose }) => {
           {cartItems.map((item) => (
             <div className="product-details" key={item.cartID}>
               <img
-                src={item.product.imageUrl}
+                src={"https://localhost:7007"+item.product.imageUrl}
                 alt={item.product.name}
                 className="product-img"
               />

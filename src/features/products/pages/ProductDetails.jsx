@@ -145,7 +145,7 @@ const ProductDetails = () => {
                     <h3>Trending Now</h3>
                     {similarProducts.slice(0, 3).map(sp => (
                         <div key={sp.productId} className="sidebar_product">
-                            <img src={sp.imageUrl} alt={sp.name} />
+                            <img src={"https://localhost:7007" + sp.imageUrl} alt={sp.name} />
                             <div>
                                 <p>{sp.name}</p>
                                 <span>₹{sp.price}</span>

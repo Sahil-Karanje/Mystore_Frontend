@@ -1,11 +1,11 @@
 import "./CategoryCard.css";
 import { useNavigate } from "react-router-dom";
 
-const CategoryCard = ({ title, imageUrl, redirectUrl }) => {
+const CategoryCard = ({ title, imageUrl, products }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(redirectUrl);
+    navigate("/search_page", { state: { results: products } });
   };
 
   return (

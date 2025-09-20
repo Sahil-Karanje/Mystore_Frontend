@@ -54,7 +54,7 @@ const PaymentGateway = ({ product, onClose }) => {
 
                 <div className="product-details">
                     <img
-                        src={product.imageUrl}
+                        src={"https://localhost:7007" + product.imageUrl}
                         alt={product.name}
                         className="product-img"
                     />

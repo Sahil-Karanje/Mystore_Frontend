@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import "../wishlist/WishList.css";
+import { useNavigate } from 'react-router-dom';
 
 const YourOrders = () => {
   const [orderlist, setOrderlist] = useState([]);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const goToProduct = (id) => {
+    navigate(`/product/${id}`);
+  }
 
   useEffect(() => {
     const fetchOrderlist = async () => {
@@ -30,9 +36,9 @@ const YourOrders = () => {
       ) : (
         <div className="wishlist-grid">
           {orderlist.map((item) => (
-            <div key={item.yourOrderID} className="wishlist-card">
+            <div key={item.yourOrderID} className="wishlist-card" onClick={()=>{goToProduct(item.product.productId)}}>
               <img
-                src={item.product?.imageUrl}
+                src={"https://localhost:7007"+item.product?.imageUrl}
                 alt={item.product?.name}
                 className="wishlist-img"
               />

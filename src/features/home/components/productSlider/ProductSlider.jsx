@@ -15,12 +15,12 @@ const ProductSlider = ({ title, products }) => {
       <div className="slider-wrapper">
         {products.map((product) => (
           <div
-            key={product.id}
+            key={product.productId}
             className="slider-item"
-            onClick={() => goToProduct(product.id)}
+            onClick={() => goToProduct(product.productId)}
           >
             <img
-              src={product.imageUrl}
+              src={"https://localhost:7007" + product.imageUrl}
               alt=""
               className="slider-image"
             />

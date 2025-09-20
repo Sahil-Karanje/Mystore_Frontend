@@ -87,7 +87,7 @@ const Admin = () => {
           {activeTab === "wishlist" && <WishList />}
           {activeTab === "address" && <Address />}
           {activeTab === "orders" && <YourOrders />}
-          {activeTab === "addProduct" && user.isSeller && <AddProduct />}
+          {activeTab === "addProduct" && user.isSeller && <AddProduct user={user} />}
         </div>
       </div>
     </>

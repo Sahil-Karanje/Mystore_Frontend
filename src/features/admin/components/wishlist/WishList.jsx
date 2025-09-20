@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./WishList.css";
+import { useNavigate } from "react-router-dom";
 
 const WishList = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -34,6 +35,10 @@ const WishList = () => {
       console.error("Error removing item:", err);
     }
   };
+  const navigate = useNavigate();
+  const goToProduct = (id) => {
+    navigate(`/product/${id}`);
+  }
 
   return (
     <div className="wishlist-container">
@@ -43,7 +48,7 @@ const WishList = () => {
       ) : (
         <div className="wishlist-grid">
           {wishlist.map((item) => (
-            <div key={item.wishListID} className="wishlist-card">
+            <div key={item.wishListID} className="wishlist-card" onClick={() => { goToProduct(item.product.productId) }}>
               <img
                 src={"https://localhost:7007" + item.product?.imageUrl}
                 alt={item.product?.name}
